@@ -60,8 +60,8 @@ function exportToPDF(peopleOnList) {
   let todaysDate = getTodaysDate();
   var pdfDoc = new PDFDocument();
   pdfDoc.pipe(fs.createWriteStream(`${todaysDate}.pdf`));
+  let placeInLine = 1;
   peopleOnList.forEach((person) => {
-    let placeInLine = 1;
     pdfDoc.fillColor("black").text(`${placeInLine}: ${person}`);
     placeInLine++;
   });
