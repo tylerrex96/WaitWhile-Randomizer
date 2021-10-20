@@ -7,12 +7,15 @@ let peopleOnList = [];
 
 function getWaitList() {
   axios
-    .get("https://api.waitwhile.com/v2/customers/search?state=WAITING&limit=100&page=1", {
-      headers: {
-        // prettier-ignore
-        "apikey": process.env.apikey,
-      },
-    })
+    .get(
+      `https://api.waitwhile.com/v2/customers/search?locationId=${process.env.locationID}&state=WAITING&limit=100&page=1`,
+      {
+        headers: {
+          // prettier-ignore
+          "apikey": process.env.apikey,
+        },
+      }
+    )
     .then(function (response) {
       let currentWaitList = response.data.results;
       getPeopleOnList(currentWaitList);
